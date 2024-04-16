@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flag guess</title><meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+    <div class="deviner">
+        <div id="drapeau">
+            <img alt="drapeau à deviner" id="drapeauImg">
+        </div>
+        <form onsubmit>
+            <label for="guess">Cherche un pays ...</label>
+            <input type="text" id="guess">
+        </form>
+        <div id="faux" style="display: none;">Réponse incorrecte</div>
+    </div>
+    <div id="listeReponses"></div>
+</body>
+<script src="script.js"></script>
+</html>
