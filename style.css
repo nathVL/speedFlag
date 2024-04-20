@@ -23,7 +23,7 @@ body {
     width: 300px;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 800px) {
     .deviner {
         width: 100%;
     }
@@ -36,8 +36,6 @@ body {
 #drapeauImg {
     width: 150px;
 }
-
-
 
 /* Submit */
 form {
@@ -54,4 +52,19 @@ form>label {
     color: red;
 }
 
-/* Réponse  */
+/* Liste réponses  */
+.reponse > img {
+    width: 50px;
+}
+
+.reponse {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 200px;
+}
+
+.pays_reponses {
+    color: white;
+    text-align: right;
+}
