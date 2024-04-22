@@ -3,7 +3,7 @@
 // Constantes
 const url_premiere_partie = "https://flagcdn.com/w640/";
 const url_extentinon_jpg= ".jpg";
-const drapeauImg = document.getElementById("drapeauImg");
+const drapeauImg = document.getElementById("drapeau_a_deviner");
 const reponseFausse = document.getElementById("faux");
 const champTexte = document.getElementById("guess");
 const listeReponses = document.getElementById("listeReponses");
@@ -58,6 +58,7 @@ let liste_pays = {
     "ukraine": "ua",
     "vatican": "va"
 }
+
 
 // Dès que la page est chargé
 document.addEventListener("DOMContentLoaded", function() {
@@ -118,14 +119,29 @@ function afficherReponseCorrecte() {
     let paysDeviner = document.createElement("p");
     paysDeviner.classList.add("pays_reponses");
     paysDeviner.textContent = pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1);
-    nouvelleReponse.appendChild(paysDeviner);
+
+
+    let nomPays = document.createElement("div");
+    nomPays.id = "nom";
+    nomPays.appendChild(paysDeviner);
+
+
+    nouvelleReponse.appendChild(nomPays);
 
     // Créer et afficher le drapeau du pays deviné
     let paysDevinerDrapeau = document.createElement("img");
     paysDevinerDrapeau.id = "drapeau_" + pays_a_deviner.toLowerCase();
+    paysDevinerDrapeau.classList.add("drapeau_reponse");
     paysDevinerDrapeau.src = url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg;
     paysDevinerDrapeau.alt = "Drapeau de " + pays_a_deviner;
-    nouvelleReponse.appendChild(paysDevinerDrapeau);
+
+
+    let drapeauPays = document.createElement("div");
+    drapeauPays.id = "drapeau";
+    drapeauPays.appendChild(paysDevinerDrapeau);
+
+
+    nouvelleReponse.appendChild(drapeauPays);
 
     afficherReponseIncorrecte(false);
 

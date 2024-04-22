@@ -1,70 +1,118 @@
 html {
     height: 100%;
+    font-size: calc(10px + 2vmin);
+}
+
+:root {
+    --background-color:#1f1d2a;
+    --transparent:rgba(0,0,0,0);
+    --noir:rgb(18, 18, 18);
+    --grey:rgb(31, 32, 35);
 }
 
 body {
+    margin: 0;
     height: 100%;
-    display: flex;
-
-    align-items: center;
-    flex-direction: column;
-    background-color: #1f1d2a;
+    width: 100%;
+    background-color: var(--background-color);
+    font-family: 'Roboto', sans-serif;
 }
 
 
 
-/* Drapeau */
-.deviner {
-    background-color: rgb(18, 18, 18);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-}
 
-@media (min-width: 800px) {
-    .deviner {
-        width: 100%;
-    }
-}
 
-.deviner * {
-    flex-grow: 1;
-}
 
-#drapeauImg {
-    width: 150px;
-}
-
-/* Submit */
-form {
+/* Panneau de jeux */
+#panneau_jeux {
+    background-color: var(--noir);
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    align-items: center; 
 }
 
-form>label {
-    color: #FFFF;
+#titre, label {
+    color: white;
+}
+
+#top {
+    margin-top: 10px;
+    border-bottom: solid white;
+}
+
+#titre {
+    font-size: 2rem;
+}
+
+#drapeau_a_deviner {
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+
 }
 
 #faux {
     color: red;
+    font-size: 1rem;
 }
 
-/* Liste réponses  */
-.reponse > img {
-    width: 50px;
+/* formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#guess {
+    font-size: 1rem;
+}
+
+label {
+    font-size: 1rem;
+}
+
+input {
+    margin-bottom: 30px;
+}
+
+
+/* Réponses */
+#listeReponses {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
 }
 
 .reponse {
+    background-color: var(--grey);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    width: 200px;
+    margin-bottom: 20px;
 }
 
 .pays_reponses {
     color: white;
-    text-align: right;
+    font-size: 1rem;
 }
+
+.drapeau_reponse {
+    height: 60px;
+}
+
+#nom, #drapeau {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* Break points 
+640
+768
+1024
+1280
+1537
+*/
