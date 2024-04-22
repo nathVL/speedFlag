@@ -9,7 +9,7 @@ const champTexte = document.getElementById("guess");
 const listeReponses = document.getElementById("listeReponses");
 
 
-// Toute les données
+// Toutes les données
 let pays_a_deviner = "";
 // Dictionnaire des pays européens avec comme clé le nom du pays et comme valeur le code osi.
 let liste_pays = {
@@ -62,7 +62,6 @@ let liste_pays = {
 
 // Dès que la page est chargé
 document.addEventListener("DOMContentLoaded", function() {
-    // Choisir le drapeau au hasard
     pays_a_deviner = newDrapeauADeviner();
 });
 
@@ -107,6 +106,30 @@ function ajouterElementEnPremier(div, elmt) {
 }
 
 /**
+ * Crée un élément HTML avec du contenu et l'ajoute à une div parente.
+ * @param {string} type - Le type d'élément HTML à créer (par exemple : "img", "p").
+ * @param {string} className - La classe à ajouter à l'élément HTML.
+ * @param {string} content - Le contenu de l'élément HTML (src pour les images, textContent pour les paragraphes).
+ * @param {string} idDiv - L'identifiant de la div parente où ajouter l'élément.
+ * @returns {HTMLElement} - La div contenant l'élément créé.
+ */
+function creerContenueDansDiv(type, className, content, idDiv) {
+    let elmt = document.createElement(type);
+    elmt.classList.add(className);
+    if (type == "img") {
+        elmt.src = content;
+        elmt.alt = "Drapeau de " + pays_a_deviner;
+    }
+    else if (type == "p") {
+        elmt.textContent = content;
+    }
+    let madiv = document.createElement("div");
+    madiv.id = idDiv;
+    madiv.appendChild(elmt);
+    return madiv
+}
+
+/**
  * Affiche une réponse correcte avec le nom du pays et son drapeau.
  * @returns {void}
  */
@@ -116,35 +139,14 @@ function afficherReponseCorrecte() {
     nouvelleReponse.classList.add("reponse"); // Ajouter une classe à la div réponse
 
     // Créer et afficher le nom du pays avec la premiere lettre en maj
-    let paysDeviner = document.createElement("p");
-    paysDeviner.classList.add("pays_reponses");
-    paysDeviner.textContent = pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1);
-
-
-    let nomPays = document.createElement("div");
-    nomPays.id = "nom";
-    nomPays.appendChild(paysDeviner);
-
-
+    let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
     nouvelleReponse.appendChild(nomPays);
 
     // Créer et afficher le drapeau du pays deviné
-    let paysDevinerDrapeau = document.createElement("img");
-    paysDevinerDrapeau.id = "drapeau_" + pays_a_deviner.toLowerCase();
-    paysDevinerDrapeau.classList.add("drapeau_reponse");
-    paysDevinerDrapeau.src = url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg;
-    paysDevinerDrapeau.alt = "Drapeau de " + pays_a_deviner;
-
-
-    let drapeauPays = document.createElement("div");
-    drapeauPays.id = "drapeau";
-    drapeauPays.appendChild(paysDevinerDrapeau);
-
-
+    let drapeauPays = creerContenueDansDiv("img", "drapeau_reponse", url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg,"drapeau");
     nouvelleReponse.appendChild(drapeauPays);
 
     afficherReponseIncorrecte(false);
-
     ajouterElementEnPremier(listeReponses, nouvelleReponse);
 
     // Afficher un nouveau drapeau pour la prochaine réponse
