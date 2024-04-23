@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SpeedFlag - devine le plus de drapeau possible !</title>
+    <title>SpeedFlag - Devine les drapeaux rapidement !</title>
     <meta charset="UTF-8" />
     <meta property="description" content="Devinez le drapeau ! Tous les drapeaux européens">
     <meta name="keywords" content="drapeau, deviner, devine, guess, europe, pays, geographie, speed, flag">
@@ -19,28 +19,54 @@
 <body>
     <div id="panneau_jeux">
         <div id="top">
-            <span id="titre">
-                SpeedFlag
-            </span>
+            <span id="titre">SpeedFlag</span>
         </div>
-        <img alt="drapeau à deviner" id="drapeau_a_deviner" class="drapeau">
-        <form>
-            <label for="guess">Cherche un pays ...</label>
-            <input type="text" id="guess">
-        </form>
+        <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
+        <div class="form">
+            <label for="guess">Cherche un pays...</label>
+            <div id="entree">
+                <input type="text" id="guess">
+                <button id="passer">Passer</button>
+            </div>
+        </div>
         <div id="faux" style="display: none;">Réponse incorrecte</div>
     </div>
     <div id="listeReponses"></div>
 
-
-
-    <div id="explication">
-        <h1>SpeedFlag : devine le plus de drapeau possible</h1>
-        <h2 class="texte">Plonge dans le défi des drapeaux ! Clique sur le bouton pour lancer le compte à rebours de 30 secondes. Pendant ce temps, mets tes compétences à l'épreuve et vois combien de drapeaux tu peux deviner. Un jeu captivant et palpitant t'attend ! Défie-toi dès maintenant !</h2>
+    <div class="presentation">
+        <h1 class="text-important">SpeedFlag</h1>
+        <div class="intro">
+            <h2 class="text">Bienvenue sur SpeedFlag,</h2>
+            <p class="text">Le jeu de devinettes de drapeaux qui va mettre tes connaissances géographiques à l'épreuve ! Prêt à relever le défi ?</p>
+        </div>
+        <div class="how-to-play">
+            <h2 class="text center">Comment jouer :</h2>
+            <ol>
+                <li class="text">
+                    <h3 class="center">Lancement du jeu</h3>
+                    <p class="center">Clique sur le bouton pour lancer le compte à rebours de 30 secondes.</p>
+                </li>
+                <li class="text"><h3 class="center"> Défi des drapeaux</h3>
+                    <p class="center">Pendant ce temps, observe attentivement chaque drapeau présenté à l'écran. Utilise tes connaissances en géographie pour identifier le pays correspondant à chaque drapeau.</p>
+                </li>
+                <li class="text">
+                    <h3 class="center">Réponse rapide</h3>
+                    <p class="center">Tape le nom du pays que tu penses correspondre au drapeau dans la zone de saisie et appuie sur "Entrée" pour soumettre ta réponse.</p>
+                </li>
+                <li class="text">
+                    <h3 class="center">Gagne des points</h3>
+                    <p class="center">Chaque réponse correcte te rapporte des points. Plus tu devines de drapeaux correctement, plus ton score augmente.</p>
+                </li>
+                <li class="text">
+                    <h3 class="center">Défie-toi</h3>
+                    <p class="center">Vois combien de drapeaux tu peux deviner avant que le temps ne soit écoulé. Repousse tes limites et améliore ton score à chaque partie !</p>
+                </li>
+            </ol>
+        </div>
     </div>
 
     <footer>
-        <a href="https://speedflag.onrender.com/"><img alt="logo du site" class="logo" src=""></a>
+        <!-- <a href="https://speedflag.onrender.com/"><img alt="logo du site" class="logo" src=""></a> -->
         <p class="createur">Fait par <a class="createur" href="https://github.com/nathVL">Nathan</a></p>
     </footer>
 </body>

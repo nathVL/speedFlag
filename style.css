@@ -14,14 +14,22 @@ html {
 
 body {
     margin: 0;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background-color: var(--background-color);
     font-family: 'Roboto', sans-serif;
 }
 
+/* General */
+.text {
+    color: white;
+    font-size: 1rem;
+}
 
-
+.text-important {
+    color: white;
+    font-size: 2rem;
+}
 
 
 
@@ -59,14 +67,23 @@ body {
 }
 
 /* formulaire */
-form {
+.form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-#guess {
+#entree {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+#guess, #passer {
     font-size: 1rem;
+    flex: 1;
+    margin: 0;
+    padding: 5px;
 }
 
 label {
@@ -111,28 +128,52 @@ input {
 }
 
 /* Explication */
-#explication {
-    margin: 20px;
+.presentation {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
     background-color: var(--violet-clair);
     width: 100%;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro {
     text-align: center;
 }
 
-h2 {
-    font-size: 14px;
-    color: #cac8d5;
+
+.how-to-play li {
+    list-style-type: none;
+}
+
+.center {
     text-align: center;
 }
 
-h1 {
-    color: white;
-    font-size: 25px;
+li {
+    text-align: center;
 }
+
+li {
+    text-align: left;
+}
+
+
+
+
+
+
+
+
 
 /* Footer */
 footer {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
     margin: 0px;
     background-color: var(--violet-fonce);
@@ -141,6 +182,11 @@ footer {
 
 .createur {
     color: white;
+}
+
+/* Cacher elements */
+.cacher {
+    display: none;
 }
 
 /* Break points 

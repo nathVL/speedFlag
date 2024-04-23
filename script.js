@@ -8,6 +8,7 @@ const drapeauImg = document.getElementById("drapeau_a_deviner");
 const reponseFausse = document.getElementById("faux");
 const champTexte = document.getElementById("guess");
 const listeReponses = document.getElementById("listeReponses");
+const passerBtn = document.getElementById("passer");
 
 
 // Toutes les données
@@ -62,9 +63,7 @@ let liste_pays = {
 
 
 // Dès que la page est chargé
-document.addEventListener("DOMContentLoaded", function() {
-    pays_a_deviner = newDrapeauADeviner();
-});
+document.addEventListener("DOMContentLoaded", newDrapeauADeviner);
 
 /**
  * Choisit aléatoirement un pays parmi ceux de la liste et affiche son drapeau.
@@ -73,10 +72,10 @@ document.addEventListener("DOMContentLoaded", function() {
 function newDrapeauADeviner() {
     let nomsDesPays = Object.keys(liste_pays);
     let paysAleatoire = nomsDesPays[Math.floor(Math.random() * nomsDesPays.length)];
+    pays_a_deviner = paysAleatoire;
     iso = liste_pays[paysAleatoire];
     let url = url_premiere_partie + iso + url_extentinon_jpg;
     drapeauImg.src = url;
-    return paysAleatoire;
 }
 
 /**
@@ -151,7 +150,7 @@ function afficherReponseCorrecte() {
     ajouterElementEnPremier(listeReponses, nouvelleReponse);
 
     // Afficher un nouveau drapeau pour la prochaine réponse
-    pays_a_deviner = newDrapeauADeviner();
+    newDrapeauADeviner();
 }
 
 /**
@@ -187,3 +186,7 @@ champTexte.addEventListener("keydown", function(event) {
         champTexte.value = "";
         }
 });
+
+
+// Boutons
+passerBtn.addEventListener("click", newDrapeauADeviner)
