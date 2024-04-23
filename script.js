@@ -1,4 +1,5 @@
 // Projet speedflag
+// faire un bouton pour passer le drapeau
 
 // Constantes
 const url_premiere_partie = "https://flagcdn.com/w640/";

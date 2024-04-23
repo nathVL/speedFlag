@@ -8,6 +8,8 @@ html {
     --transparent:rgba(0,0,0,0);
     --noir:rgb(18, 18, 18);
     --grey:rgb(31, 32, 35);
+    --violet-fonce:#14131b;
+    --violet-clair:#262334;
 }
 
 body {
@@ -46,10 +48,9 @@ body {
 }
 
 #drapeau_a_deviner {
-    height: 100px;
+    height: 150px;
     margin-top: 30px;
     margin-bottom: 50px;
-
 }
 
 #faux {
@@ -82,13 +83,15 @@ input {
     display: flex;
     flex-direction: column;
     margin: 50px;
+    min-height: 100px;
 }
 
 .reponse {
-    background-color: var(--grey);
+    background-color: var(--violet-clair);
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 .pays_reponses {
@@ -107,7 +110,38 @@ input {
     justify-content: center;
 }
 
+/* Explication */
+#explication {
+    margin: 20px;
+    background-color: var(--violet-clair);
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
 
+h2 {
+    font-size: 14px;
+    color: #cac8d5;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 25px;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    width: 100%;
+    margin: 0px;
+    background-color: var(--violet-fonce);
+    text-align: center;
+}
+
+.createur {
+    color: white;
+}
 
 /* Break points 
 640
