@@ -71,7 +71,10 @@ document.addEventListener("DOMContentLoaded", newDrapeauADeviner);
  */
 function newDrapeauADeviner() {
     let nomsDesPays = Object.keys(liste_pays);
-    let paysAleatoire = nomsDesPays[Math.floor(Math.random() * nomsDesPays.length)];
+    paysAleatoire = nomsDesPays[Math.floor(Math.random() * nomsDesPays.length)];
+    while (paysAleatoire == pays_a_deviner) {
+        paysAleatoire = nomsDesPays[Math.floor(Math.random() * nomsDesPays.length)];
+    }
     pays_a_deviner = paysAleatoire;
     iso = liste_pays[paysAleatoire];
     let url = url_premiere_partie + iso + url_extentinon_jpg;
