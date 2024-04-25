@@ -45,8 +45,10 @@ h1 {
     color: white;
 }
 
-#settings-logo {
-    color: white;
+#settings-logo, #fermerParametre {
+    background-color: var(--background-color);
+    width: 1rem;
+    cursor: pointer;
 }
 /* Parametre */
 #settingsPanel {
@@ -56,17 +58,22 @@ h1 {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     width: auto;
     max-width: 350px;
-    transform: translate(-50%, -50%);
+    min-width: 210px;
     padding: 1rem;
 }
 
-.parametre {
-    width: 100%;
+#parametreTitre {
+    margin: 0;
 }
 
-
+#fermerParametre {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
 
 #top {
     margin-top: 10px;
