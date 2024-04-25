@@ -12,15 +12,57 @@
     <meta property="og:site_name" content="speedflag.onrender.com"/>
     <meta property="og:url" content="https://speedflag.onrender.com/"/>
 
-    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="icon" type="image/png" href="./img/favicon.png">
     <link type="text/css" rel="stylesheet" href="./style.css">
     <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="9f1d6a7a-c1f9-4538-88f6-dfc1e971df75"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div id="settingsPanel" class="cacher">
+        
+        <div class="parametre">
+            <h2>Paramètre</h2>
+            <img src="./img/close-line.png" id="fermerParametre">
+        </div>
+        
+        <div id="continents">
+            <h3>Pays à deviner</h3>
+            <ol>
+                <li>
+                    <input type="checkbox" id="eu" name="Europe" checked />
+                    <label for="Europe">Europe</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="af" name="Afrique" />
+                    <label for="Afrique">Afrique</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="oc" name="Oceanie" />
+                    <label for="Oceanie">Oceanie</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="ams" name="AmeriqueS" />
+                    <label for="Europe">Amerique du sud</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="amn" name="AmeriqueN" />
+                    <label for="AmeriqueN">Amerique du nord</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="as" name="asie" />
+                    <label for="Asie">Asie</label>
+                </li>
+            </ol>
+        </div>
+        
+        <h3>Autres caractéristiques</h3>
+        <p>prochainement...</p>
+    </div>
+
     <div id="panneau_jeux">
         <div id="top">
             <span id="titre">SpeedFlag</span>
+            <img src="./img/settings.png" id="settings-logo">
         </div>
         <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
         <div class="form">
@@ -35,7 +77,6 @@
     <div id="listeReponses"></div>
 
     <div class="presentation">
-        <h1 class="text-important">SpeedFlag</h1>
         <div class="intro">
             <h2 class="text-important">Bienvenue sur SpeedFlag,</h2>
             <p class="text">Le jeu de devinettes de drapeaux qui va mettre tes connaissances géographiques à l'épreuve ! Prêt à relever le défi ?</p>
