@@ -465,11 +465,3 @@ function StartTimer(timeSeconds) {
     time = timeSeconds * 10;
     intervalId = setInterval(updateCountDown, 100);
 }
-
-/**
- * Réinitialise le timer et affiche le temps initial.
- */
-// function resetTimer() {
-//     estArrete = false;
-//     clearInterval(intervalId);
-// }
