@@ -20,7 +20,8 @@ const asieCheckbox = document.getElementById("as");
 // Commander le jeu
 const commencerJeu = document.getElementById("commencerLejeu");
 const rejouer = document.getElementById("recommencer");
-
+const tmpsJeu = document.getElementById("tmpsJeu");
+const tmpsAct = document.getElementById("tmpsAct");
 
 // Toutes les données
 let pays_a_deviner = "";
@@ -393,9 +394,9 @@ fermer_parametre.addEventListener("click", afficherParametre);
 const finJeu = document.getElementById("findujeu");
 
 function commencerLeJeu() {
-    if (tmps.checked) {
+    if (tmpsAct.checked) {
         // Commencer le timer
-        StartTimer(1);
+        StartTimer(tmpsJeu.value);
     } else {
         minuteur.classList.add("cacher")
     }    
