@@ -41,8 +41,7 @@
                     <label for="Europe">Amerique du sud</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="amn" name="AmeriqueN" />
-                    <label for="AmeriqueN">Amerique du nord</label>
+                    <label for="AmeriqueN"><input type="checkbox" id="amn" name="AmeriqueN" />Amerique du nord</label>
                 </li>
                 <li>
                     <input type="checkbox" id="as" name="asie" />
@@ -52,7 +51,8 @@
         </div>
         
         <h3>Autres caractéristiques</h3>
-        <p>prochainement...</p>
+        <input type="checkbox" id="tmps" name="jouer avec temps" checked/>
+        <label for="jouer avec temps">Temps</label>
     </div>
 
     <div id="panneau_jeux">
@@ -60,15 +60,33 @@
             <span id="titre">SpeedFlag</span>
             <img src="./img/settings.png" id="settings-logo">
         </div>
+
+    <div id="prejeu" class="flex">
+        <h2 class="text">Commencer le jeux</h2>
+        <button id="commencerLejeu">Commencer</button>
+    </div>
+
+    <div id="findujeu" class="cacher">
+        <h2 class="text">Fini !</h2>
+        <p id="nbDrapeau" class="text">Nb drapeau : 0</p>
+        <button id="recommencer">Recommencer</button>
+    </div>
+    
+    <div id="jeu" class="cacher">
+        <p id="nbDrapeau" class="text">Nb drapeau : 0</p>
         <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
         <div class="form">
             <label for="guess">Cherche un pays...</label>
             <div id="entree">
+                <p id="minuteur" class="text">30.0</p>
                 <input type="text" id="guess">
                 <button id="passer">Passer</button>
             </div>
         </div>
-        <div id="faux" style="display: none;">Réponse incorrecte</div>
+    </div>
+
+
+        <div id="faux" class="cacher">Réponse incorrecte</div>
     </div>
     <div id="listeReponses"></div>
 
@@ -79,27 +97,21 @@
         </div>
         <div class="how-to-play">
             <h2 class="text-important center">Comment jouer :</h2>
-            <ol>
-                <li class="text">
-                    <h3 class="center">Lancement du jeu</h3>
-                    <p class="center">Clique sur le bouton pour lancer le compte à rebours de 30 secondes.</p>
-                </li>
-                <li class="text"><h3 class="center"> Défi des drapeaux</h3>
-                    <p class="center">Pendant ce temps, observe attentivement chaque drapeau présenté à l'écran. Utilise tes connaissances en géographie pour identifier le pays correspondant à chaque drapeau.</p>
-                </li>
-                <li class="text">
-                    <h3 class="center">Réponse rapide</h3>
-                    <p class="center">Tape le nom du pays que tu penses correspondre au drapeau dans la zone de saisie et appuie sur "Entrée" pour soumettre ta réponse.</p>
-                </li>
-                <li class="text">
-                    <h3 class="center">Gagne des points</h3>
-                    <p class="center">Chaque réponse correcte te rapporte des points. Plus tu devines de drapeaux correctement, plus ton score augmente.</p>
-                </li>
-                <li class="text">
-                    <h3 class="center">Défie-toi</h3>
-                    <p class="center">Vois combien de drapeaux tu peux deviner avant que le temps ne soit écoulé. Repousse tes limites et améliore ton score à chaque partie !</p>
-                </li>
-            </ol>
+                <!-- Enlever la liste et ne pas centrer le texte-->
+                    <h3 class="center description">Lancement du jeu</h3>
+                    <p class="center description">Clique sur le bouton pour lancer le compte à rebours de 30 secondes.</p>
+
+                    <h3 class="center description"> Défi des drapeaux</h3>
+                    <p class="center description">Pendant ce temps, observe attentivement chaque drapeau présenté à l'écran. Utilise tes connaissances en géographie pour identifier le pays correspondant à chaque drapeau.</p>
+
+                    <h3 class="center description">Réponse rapide</h3>
+                    <p class="center description">Tape le nom du pays que tu penses correspondre au drapeau dans la zone de saisie et appuie sur "Entrée" pour soumettre ta réponse.</p>
+
+                    <h3 class="center description">Gagne des points</h3>
+                    <p class="center description">Chaque réponse correcte te rapporte des points. Plus tu devines de drapeaux correctement, plus ton score augmente.</p>
+
+                    <h3 class="center description">Défie-toi</h3>
+                    <p class="center description">Vois combien de drapeaux tu peux deviner avant que le temps ne soit écoulé. Repousse tes limites et améliore ton score à chaque partie !</p>
         </div>
     </div>
 

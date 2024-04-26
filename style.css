@@ -33,6 +33,12 @@ h1 {
 
 
 /* Panneau de jeux */
+#prejeu, #findujeu {
+    border: solid var(--violet-clair);
+    padding: 20px;
+    margin: 20px;
+}
+
 #panneau_jeux {
     background-color: var(--noir);
     margin-top: 80px;
@@ -50,6 +56,11 @@ h1 {
     width: 1rem;
     cursor: pointer;
 }
+
+#minuteur {
+    margin: 0;
+}
+
 /* Parametre */
 #settingsPanel {
     background-color: var(--noir);
@@ -216,6 +227,13 @@ footer {
 .cacher {
     display: none;
 }
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
 
 /* Break points 
 640

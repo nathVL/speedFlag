@@ -1,5 +1,4 @@
 // Projet speedflag
-// faire un bouton pour passer le drapeau
 
 // Constantes
 const url_premiere_partie = "https://flagcdn.com/w640/";
@@ -18,10 +17,14 @@ const oceanieCheckbox = document.getElementById("oc");
 const ameriqueSudCheckbox = document.getElementById("ams");
 const ameriqueNordCheckbox = document.getElementById("amn");
 const asieCheckbox = document.getElementById("as");
+// Commander le jeu
+const commencerJeu = document.getElementById("commencerLejeu");
+const rejouer = document.getElementById("recommencer");
 
 
 // Toutes les données
 let pays_a_deviner = "";
+let score = 0;
 // Dictionnaire des pays par continent avec comme clé le nom du pays et comme valeur le code osi.
 let pays_europe = {
     "allemagne": "de",
@@ -109,7 +112,7 @@ let pays_afrique = {
     "niger": "ne",
     "nigeria": "ng",
     "rwanda": "rw",
-    "saint tome et principe": "st",
+    "sao tome-et-principe": "st",
     "senegal": "sn",
     "seychelles": "sc",
     "sierra leone": "sl",
@@ -152,7 +155,7 @@ let pays_asie = {
     "malaisie": "my",
     "maldives": "mv",
     "mongolie": "mn",
-    "myanmar": "mm",
+    "birmanie": "mm",
     "nepal": "np",
     "oman": "om",
     "pakistan": "pk",
@@ -166,7 +169,7 @@ let pays_asie = {
     "syrie": "sy",
     "tadjikistan": "tj",
     "thailande": "th",
-    "timor-leste": "tl",
+    "timor oriental": "tl",
     "turkmenistan": "tm",
     "emirats arabes unis": "ae",
     "ouzbekistan": "uz",
@@ -267,19 +270,6 @@ function majDrapeau() {
 }
 
 /**
- * Affiche ou masque un élément HTML représentant une réponse incorrecte.
- * @param {boolean} Afficher - Indique si l'élément doit être affiché (true) ou masqué (false).
- * @returns {void}
- */
-function afficherReponseIncorrecte(Afficher) {
-    if (Afficher) {
-        reponseFausse.style.display = "";
-    } else {
-        reponseFausse.style.display = "none";
-    }
-}
-
-/**
  * Ajoute un élément HTML en premier dans un conteneur.
  * @param {HTMLElement} div - Le conteneur où ajouter l'élément.
  * @param {HTMLElement} elmt - L'élément à ajouter.
@@ -324,7 +314,11 @@ function creerContenueDansDiv(type, className, content, idDiv) {
 function afficherReponseCorrecte() {
     // Créer une nouvelle div pour afficher la réponse
     let nouvelleReponse = document.createElement("div");
-    nouvelleReponse.classList.add("reponse"); // Ajouter une classe à la div réponse
+    nouvelleReponse.classList.add("reponse");
+
+    let nbDrapeau = document.getElementById("nbDrapeau")
+    score++;
+    nbDrapeau.innerHTML = `Nb drapeau : ${score}`;
 
     // Créer et afficher le nom du pays avec la premiere lettre en maj
     let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
@@ -334,7 +328,7 @@ function afficherReponseCorrecte() {
     let drapeauPays = creerContenueDansDiv("img", "drapeau_reponse", url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg,"drapeau");
     nouvelleReponse.appendChild(drapeauPays);
 
-    afficherReponseIncorrecte(false);
+    reponseFausse.classList.add("cacher")
     ajouterElementEnPremier(listeReponses, nouvelleReponse);
 
     // Afficher un nouveau drapeau pour la prochaine réponse
@@ -362,7 +356,7 @@ function estBon(valeur_devine) {
     if (valeur_devine == pays_a_deviner) {
         afficherReponseCorrecte();        
     } else {
-        afficherReponseIncorrecte(true);
+        reponseFausse.classList.remove("cacher")
     }
 }
 
@@ -395,9 +389,86 @@ passerBtn.addEventListener("click", newDrapeauADeviner);
 settings_logo.addEventListener("click", afficherParametre);
 fermer_parametre.addEventListener("click", afficherParametre);
 
+// Comande jeu
+const finJeu = document.getElementById("findujeu");
 
+function commencerLeJeu() {
+    if (tmps.checked) {
+        // Commencer le timer
+        StartTimer(1);
+    } else {
+        minuteur.classList.add("cacher")
+    }    
+    // Cacher le premier panneau
+    const prejeu = document.getElementById("prejeu");
+    prejeu.classList.remove("flex")
+    prejeu.classList.add("cacher")
+    // Monter le jeu
+    const jeu = document.getElementById("jeu")
+    jeu.classList.remove("cacher");
+    jeu.classList.add("flex");
+    // Ecrire direct
+    champTexte.focus();
+    // Lancer le jeu
+    newDrapeauADeviner();
+}
+
+function recommencerJeu() {
+    finJeu.classList.add("cacher")
+    finJeu.classList.remove("flex")   
+    listeReponses.innerHTML = "";
+    champTexte.value = "";
+    score = 0;
+    commencerLeJeu();
+}
+
+function finirLejeu() {
+    jeu.classList.remove("flex");
+    jeu.classList.add("cacher");
+    finJeu.classList.remove("cacher");
+    finJeu.classList.add("flex");
+    reponseFausse.classList.add("cacher");
+}
+
+commencerJeu.addEventListener("click", commencerLeJeu);
+rejouer.addEventListener("click", recommencerJeu)
 
 
 // TIMER
-// Dès que la page est chargé
-document.addEventListener("DOMContentLoaded", newDrapeauADeviner);
+const countdown = document.getElementById("minuteur");
+let time;
+
+/**
+ * Met à jour le compte à rebours en affichant les minutes, les secondes et les dixièmes de seconde.
+ */
+function updateCountDown() {
+    const seconds = Math.floor((time % 600) / 10);
+    const dsec = time % 10;
+    let secAfficher = seconds;
+    secAfficher = secAfficher < 10 ? '0' + secAfficher : secAfficher;
+    countdown.innerHTML = `${secAfficher}:${dsec}`;
+    if (time <= 0) {
+        clearInterval(intervalId);
+        finirLejeu();
+    } else {
+        time--;
+    }
+} 
+
+/**
+ * Démarre le timer avec les secondes spécifiées (et les minutes optionnelles).
+ * @param {number} timeSeconds - Les secondes pour démarrer le timer.
+ */
+function StartTimer(timeSeconds) {
+    estArrete = false;
+    time = timeSeconds * 10;
+    intervalId = setInterval(updateCountDown, 100);
+}
+
+/**
+ * Réinitialise le timer et affiche le temps initial.
+ */
+// function resetTimer() {
+//     estArrete = false;
+//     clearInterval(intervalId);
+// }
