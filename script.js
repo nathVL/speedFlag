@@ -1,5 +1,4 @@
 // Projet speedflag
-
 // Constantes
 const url_premiere_partie = "https://flagcdn.com/w640/";
 const url_extentinon_jpg= ".jpg";
@@ -7,9 +6,11 @@ const drapeauImg = document.getElementById("drapeau_a_deviner");
 const reponseFausse = document.getElementById("faux");
 const champTexte = document.getElementById("guess");
 const listeReponses = document.getElementById("listeReponses");
-const passerBtn = document.getElementById("passer");
 const settings_logo = document.getElementById("settings-logo");
 const fermer_parametre = document.getElementById("fermerParametre");
+const nbDrapeau = document.getElementById("nbDrapeau");
+const nbDrapeauFin = document.getElementById("nbDrapeauFin");
+const finJeu = document.getElementById("findujeu");
 // Continents
 const europeCheckbox = document.getElementById("eu");
 const afriqueCheckbox = document.getElementById("af");
@@ -19,7 +20,7 @@ const ameriqueNordCheckbox = document.getElementById("amn");
 const asieCheckbox = document.getElementById("as");
 // Commander le jeu
 const commencerJeu = document.getElementById("commencerLejeu");
-const rejouer = document.getElementById("recommencer");
+// const rejouer = document.getElementById("recommencer");
 const tmpsJeu = document.getElementById("tmpsJeu");
 const tmpsAct = document.getElementById("tmpsAct");
 
@@ -316,22 +317,18 @@ function afficherReponseCorrecte() {
     // Créer une nouvelle div pour afficher la réponse
     let nouvelleReponse = document.createElement("div");
     nouvelleReponse.classList.add("reponse");
-
-    let nbDrapeau = document.getElementById("nbDrapeau")
+    // Actualiser le score
     score++;
     nbDrapeau.innerHTML = `Nb drapeau : ${score}`;
-
     // Créer et afficher le nom du pays avec la premiere lettre en maj
     let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
     nouvelleReponse.appendChild(nomPays);
-
     // Créer et afficher le drapeau du pays deviné
     let drapeauPays = creerContenueDansDiv("img", "drapeau_reponse", url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg,"drapeau");
     nouvelleReponse.appendChild(drapeauPays);
 
     reponseFausse.classList.add("cacher")
     ajouterElementEnPremier(listeReponses, nouvelleReponse);
-
     // Afficher un nouveau drapeau pour la prochaine réponse
     newDrapeauADeviner();
 }
@@ -385,13 +382,11 @@ function afficherParametre() {
 
 
 // Boutons
-passerBtn.addEventListener("click", newDrapeauADeviner);
-
 settings_logo.addEventListener("click", afficherParametre);
 fermer_parametre.addEventListener("click", afficherParametre);
 
 // Comande jeu
-const finJeu = document.getElementById("findujeu");
+commencerJeu.addEventListener("click", commencerLeJeu);
 
 function commencerLeJeu() {
     if (tmpsAct.checked) {
@@ -424,15 +419,14 @@ function recommencerJeu() {
 }
 
 function finirLejeu() {
+    time = 0;
     jeu.classList.remove("flex");
     jeu.classList.add("cacher");
+    nbDrapeauFin.innerHTML = `Drapeau deviné : ${score}`;
     finJeu.classList.remove("cacher");
     finJeu.classList.add("flex");
     reponseFausse.classList.add("cacher");
 }
-
-commencerJeu.addEventListener("click", commencerLeJeu);
-rejouer.addEventListener("click", recommencerJeu)
 
 
 // TIMER
@@ -457,7 +451,7 @@ function updateCountDown() {
 } 
 
 /**
- * Démarre le timer avec les secondes spécifiées (et les minutes optionnelles).
+ * Démarre le timer avec les secondes spécifiées
  * @param {number} timeSeconds - Les secondes pour démarrer le timer.
  */
 function StartTimer(timeSeconds) {

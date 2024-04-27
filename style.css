@@ -39,6 +39,17 @@ h1 {
     margin: 20px;
 }
 
+#abandonEtNb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#abandonner {
+    height: 1rem;
+    margin-right: 1rem;
+}
+
 #panneau_jeux {
     background-color: var(--noir);
     margin-top: 80px;

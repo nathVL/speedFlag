@@ -73,19 +73,22 @@
 
     <div id="findujeu" class="cacher">
         <h2 class="text">Fini !</h2>
-        <p id="nbDrapeau" class="text">Nb drapeau : 0</p>
-        <button id="recommencer">Recommencer</button>
+        <p id="nbDrapeauFin" class="text">Nb drapeau : 0</p>
+        <button id="recommencer" onclick="recommencerJeu()">Recommencer</button>
     </div>
     
     <div id="jeu" class="cacher">
-        <p id="nbDrapeau" class="text">Nb drapeau : 0</p>
+        <div id="abandonEtNb">
+            <button id="abandonner" onclick="finirLejeu();">Abandonner</button>
+            <p id="nbDrapeau" class="text">Nb drapeau : 0</p>
+        </div>        
         <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
         <div class="form">
             <label for="guess">Cherche un pays...</label>
             <div id="entree">
                 <p id="minuteur" class="text">30.0</p>
                 <input type="text" id="guess">
-                <button id="passer">Passer</button>
+                <button id="passer" onclick="newDrapeauADeviner();">Passer</button>
             </div>
         </div>
     </div>
