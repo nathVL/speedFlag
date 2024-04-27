@@ -80,6 +80,38 @@ h1 {
     margin: 0;
 }
 
+/* Bouton Style */
+/* 
+.form-check {
+    position: relative;
+    grid-template-columns: 2em 1fr;
+    grid-template-areas: "checkbox label";
+    gap: 0.7em;
+}
+
+.form-check input {
+    position: absolute;
+    opacity: 0;
+}
+
+.form-check label {
+    display: grid;
+}
+
+.form-check label::before {
+    content: '';
+    grid-area: "checkbox";
+    display: block;
+    width: 100%;
+    height: 1em;
+    border: solid gray;
+    border-radius: 1em;
+} */
+
+
+
+
+
 #fermerParametre {
     position: absolute;
     top: 1rem;
