@@ -271,6 +271,19 @@ function majDrapeau() {
     ajouterPaysSiCoche(asieCheckbox, pays_asie, liste_pays);
 }
 
+// function passer() {
+//     let nouvelleReponse = document.createElement("div");
+//     nouvelleReponse.classList.add("reponse", "passer");
+//     nbDrapeau.innerHTML = `Nb drapeau : ${score}`;
+//     let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
+//     nouvelleReponse.appendChild(nomPays);
+//     let drapeauPays = creerContenueDansDiv("img", "drapeau_reponse", url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg,"drapeau");
+//     nouvelleReponse.appendChild(drapeauPays);
+//     reponseFausse.classList.add("cacher");
+//     ajouterElementEnPremier(listeReponses, nouvelleReponse);
+//     newDrapeauADeviner();
+// }
+
 /**
  * Ajoute un élément HTML en premier dans un conteneur.
  * @param {HTMLElement} div - Le conteneur où ajouter l'élément.
@@ -313,12 +326,16 @@ function creerContenueDansDiv(type, className, content, idDiv) {
  * Affiche une réponse correcte avec le nom du pays et son drapeau.
  * @returns {void}
  */
-function afficherReponseCorrecte() {
+function afficherReponseCorrecte(passer = false) {
     // Créer une nouvelle div pour afficher la réponse
     let nouvelleReponse = document.createElement("div");
     nouvelleReponse.classList.add("reponse");
-    // Actualiser le score
-    score++;
+    // Si la reponse est passe
+    if (passer) {
+        nouvelleReponse.classList.add("passer");
+    } else {
+        score++;
+    }
     nbDrapeau.innerHTML = `Nb drapeau : ${score}`;
     // Créer et afficher le nom du pays avec la premiere lettre en maj
     let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
@@ -327,7 +344,7 @@ function afficherReponseCorrecte() {
     let drapeauPays = creerContenueDansDiv("img", "drapeau_reponse", url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg,"drapeau");
     nouvelleReponse.appendChild(drapeauPays);
 
-    reponseFausse.classList.add("cacher")
+    reponseFausse.classList.add("cacher");
     ajouterElementEnPremier(listeReponses, nouvelleReponse);
     // Afficher un nouveau drapeau pour la prochaine réponse
     newDrapeauADeviner();

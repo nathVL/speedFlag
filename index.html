@@ -26,26 +26,26 @@
             <ol>
                 <li>
                     <input type="checkbox" id="eu" name="Europe" checked />
-                    <label for="Europe">Europe</label>
+                    <label for="eu">Europe</label>
                 </li>
                 <li>
                     <input type="checkbox" id="af" name="Afrique" />
-                    <label for="Afrique">Afrique</label>
+                    <label for="af">Afrique</label>
                 </li>
                 <li>
                     <input type="checkbox" id="oc" name="Oceanie" />
-                    <label for="Oceanie">Oceanie</label>
+                    <label for="oc">Oceanie</label>
                 </li>
                 <li>
                     <input type="checkbox" id="ams" name="AmeriqueS" />
-                    <label for="Europe">Amerique du sud</label>
+                    <label for="ams">Amerique du sud</label>
                 </li>
                 <li>
-                    <label for="AmeriqueN"><input type="checkbox" id="amn" name="AmeriqueN" />Amerique du nord</label>
+                    <label for="amn"><input type="checkbox" id="amn" name="AmeriqueN" />Amerique du nord</label>
                 </li>
                 <li>
                     <input type="checkbox" id="as" name="asie" />
-                    <label for="Asie">Asie</label>
+                    <label for="as">Asie</label>
                 </li>
             </ol>
         </div>
@@ -54,7 +54,7 @@
         
         <div class="form-check">
             <input type="checkbox" id="tmpsAct" name="tmpsActive" checked/>
-            <label for="tmpsActive">Temps</label>
+            <label for="tmpsAct">Temps</label>
         </div>
         
         <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0">
@@ -88,13 +88,13 @@
             <div id="entree">
                 <p id="minuteur" class="text">30.0</p>
                 <input type="text" id="guess">
-                <button id="passer" onclick="newDrapeauADeviner();">Passer</button>
+                <button id="passer" onclick="afficherReponseCorrecte(true);">Passer</button>
             </div>
         </div>
     </div>
 
 
-        <div id="faux" class="cacher">Réponse incorrecte</div>
+    <div id="faux" class="cacher">Réponse incorrecte</div>
     </div>
     <div id="listeReponses"></div>
 

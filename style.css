@@ -25,6 +25,15 @@ body {
     font-size: 1rem;
 }
 
+button {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.passer {
+    border: solid red 2px;
+}
+
 h1 {
     color: white;
     font-size: 2rem;
@@ -46,7 +55,6 @@ h1 {
 }
 
 #abandonner {
-    height: 1rem;
     margin-right: 1rem;
 }
 
