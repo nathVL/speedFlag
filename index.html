@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <title>SpeedFlag - Devine les drapeaux rapidement !</title>
     <meta charset="UTF-8" />
-    <meta property="description" content="Devinez le drapeau ! Tous les drapeaux européens">
-    <meta name="keywords" content="drapeau, deviner, devine, guess, europe, pays, geographie, speed, flag">
+    <meta name="title" property="og:title" content="SpeedFlag - Devinez les drapeaux le plus rapidement possible."/>
+    <meta name="description" property="og:description" content="Testez vos connaissances en drapeaux du monde entier. Relevez le défi et devinez les pays à partir de leurs drapeaux. Jouez dès maintenant sur SpeedFlag !">
+    <meta name="keywords" content="drapeau, deviner, devine, guess, europe, pays, geographie, speed, flag, speedflag">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow" />
     
-    <meta property="og:title" content="SpeedFlag - Devinez les drapeaux le plus rapidement possible."/>
-    <meta property="og:description" content="Testez vos connaissances en drapeaux du monde entier. Relevez le défi et devinez les pays à partir de leurs drapeaux. Jouez dès maintenant sur SpeedFlag !">
     <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="speedflag.onrender.com"/>
-    <meta property="og:url" content="https://speedflag.onrender.com/"/>
-
+    <meta property="og:site_name" content="SpeedFlag"/>
+    <meta property="og:url" content="https://speedflag.net"/>
+  
     <link rel="icon" type="image/png" href="./img/favicon.png">
     <link type="text/css" rel="stylesheet" href="./style.css">
     <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="9f1d6a7a-c1f9-4538-88f6-dfc1e971df75"></script>
@@ -20,7 +21,7 @@
 <body>
     <div id="settingsPanel" class="cacher">
         <h2 id="parametreTitre">Paramètre</h2>
-        <img src="./img/close-line.png" id="fermerParametre">
+        <img src="./img/close-line.png" id="fermerParametre" alt="Croix cliquable pour fermer les paramètres">
         <div id="continents">
             <h3>Pays à deviner</h3>
             <ol>
@@ -63,7 +64,7 @@
     <div id="panneau_jeux">
         <div id="top">
             <span id="titre">SpeedFlag</span>
-            <img src="./img/settings.png" id="settings-logo">
+            <img src="./img/settings.png" id="settings-logo" alt="Logo cliquable des paramètres">
         </div>
 
     <div id="prejeu" class="flex">
