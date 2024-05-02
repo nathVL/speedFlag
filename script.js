@@ -271,19 +271,6 @@ function majDrapeau() {
     ajouterPaysSiCoche(asieCheckbox, pays_asie, liste_pays);
 }
 
-// function passer() {
-//     let nouvelleReponse = document.createElement("div");
-//     nouvelleReponse.classList.add("reponse", "passer");
-//     nbDrapeau.innerHTML = `Nb drapeau : ${score}`;
-//     let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
-//     nouvelleReponse.appendChild(nomPays);
-//     let drapeauPays = creerContenueDansDiv("img", "drapeau_reponse", url_premiere_partie + liste_pays[pays_a_deviner] + url_extentinon_jpg,"drapeau");
-//     nouvelleReponse.appendChild(drapeauPays);
-//     reponseFausse.classList.add("cacher");
-//     ajouterElementEnPremier(listeReponses, nouvelleReponse);
-//     newDrapeauADeviner();
-// }
-
 /**
  * Ajoute un élément HTML en premier dans un conteneur.
  * @param {HTMLElement} div - Le conteneur où ajouter l'élément.
@@ -333,6 +320,7 @@ function afficherReponseCorrecte(passer = false) {
     // Si la reponse est passe
     if (passer) {
         nouvelleReponse.classList.add("passer");
+        champTexte.focus();
     } else {
         score++;
     }
@@ -381,7 +369,7 @@ champTexte.addEventListener("keydown", function(event) {
         event.preventDefault();
         estBon(champTexte.value);
         champTexte.value = "";
-        }
+    }
 });
 
 
@@ -437,6 +425,7 @@ function recommencerJeu() {
 
 function finirLejeu() {
     time = 0;
+    nbDrapeau.innerHTML = `Drapeau deviné : 0`;
     jeu.classList.remove("flex");
     jeu.classList.add("cacher");
     nbDrapeauFin.innerHTML = `Drapeau deviné : ${score}`;

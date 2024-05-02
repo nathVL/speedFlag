@@ -20,10 +20,10 @@
 </head>
 <body>
     <div id="settingsPanel" class="cacher">
-        <h2 id="parametreTitre">Paramètre</h2>
+        <h2 id="parametreTitre">Settings</h2>
         <img src="./img/close-line.png" id="fermerParametre" alt="Croix cliquable pour fermer les paramètres">
         <div id="continents">
-            <h3>Pays à deviner</h3>
+            <h3>Countries to guess</h3>
             <ol>
                 <li>
                     <input type="checkbox" id="eu" name="Europe" checked />
@@ -31,31 +31,31 @@
                 </li>
                 <li>
                     <input type="checkbox" id="af" name="Afrique" />
-                    <label for="af">Afrique</label>
+                    <label for="af">Africa</label>
                 </li>
                 <li>
                     <input type="checkbox" id="oc" name="Oceanie" />
-                    <label for="oc">Oceanie</label>
+                    <label for="oc">Oceania</label>
                 </li>
                 <li>
                     <input type="checkbox" id="ams" name="AmeriqueS" />
-                    <label for="ams">Amerique du sud</label>
+                    <label for="ams">South America</label>
                 </li>
                 <li>
-                    <label for="amn"><input type="checkbox" id="amn" name="AmeriqueN" />Amerique du nord</label>
+                    <label for="amn"><input type="checkbox" id="amn" name="AmeriqueN" />North America</label>
                 </li>
                 <li>
                     <input type="checkbox" id="as" name="asie" />
-                    <label for="as">Asie</label>
+                    <label for="as">Asia</label>
                 </li>
             </ol>
         </div>
         
-        <h3>Autres caractéristiques</h3>
+        <h3>Other features</h3>
         
         <div class="form-check">
             <input type="checkbox" id="tmpsAct" name="tmpsActive" checked/>
-            <label for="tmpsAct">Temps</label>
+            <label for="tmpsAct">Time</label>
         </div>
         
         <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0">
@@ -68,64 +68,64 @@
         </div>
 
     <div id="prejeu" class="flex">
-        <h2 class="text">Commencer le jeu</h2>
-        <button id="commencerLejeu">Commencer</button>
+        <h2 class="text">Start to guess</h2>
+        <button id="commencerLejeu">Start</button>
     </div>
 
     <div id="findujeu" class="cacher">
         <h2 class="text">Fini !</h2>
-        <p id="nbDrapeauFin" class="text">Nb drapeau : 0</p>
-        <button id="recommencer" onclick="recommencerJeu()">Recommencer</button>
+        <p id="nbDrapeauFin" class="text">Nb flags : 0</p>
+        <button id="recommencer" onclick="recommencerJeu()">Restart</button>
     </div>
     
     <div id="jeu" class="cacher">
         <div id="abandonEtNb">
-            <button id="abandonner" onclick="finirLejeu();">Abandonner</button>
-            <p id="nbDrapeau" class="text">Nb drapeau : 0</p>
+            <button id="abandonner" onclick="finirLejeu();">Give up</button>
+            <p id="nbDrapeau" class="text">Nb flags : 0</p>
         </div>        
         <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
         <div class="form">
-            <label for="guess">Cherche un pays...</label>
+            <label for="guess">Try a country...</label>
             <div id="entree">
                 <p id="minuteur" class="text">30.0</p>
                 <input type="text" id="guess">
-                <button id="passer" onclick="afficherReponseCorrecte(true);">Passer</button>
+                <button id="passer" onclick="afficherReponseCorrecte(true);">Pass</button>
             </div>
         </div>
     </div>
 
 
-    <div id="faux" class="cacher">Réponse incorrecte</div>
+    <div id="faux" class="cacher">Wrong answer</div>
     </div>
     <div id="listeReponses"></div>
 
     <div class="presentation">
         <div class="intro">
-            <h2 class="text-important">Bienvenue sur SpeedFlag,</h2>
-            <p class="text">Le jeu de devinettes de drapeaux qui va mettre tes connaissances géographiques à l'épreuve ! Prêt à relever le défi ?</p>
+            <h2 class="text-important">Welcome to SpeedFlag,</h2>
+            <p class="text">The flag guessing game that will put your geographical knowledge to the test! Ready for the challenge?</p>
         </div>
         <div class="how-to-play">
-            <h2 class="text-important center">Comment jouer :</h2>
-                    <h3 class="center text">Lancement du jeu</h3>
-                    <p class="center text">Clique sur le bouton pour lancer le compte à rebours de 30 secondes.</p>
+            <h2 class="text-important center">How to play :</h2>
+                    <h3 class="center text">Launching the game</h3>
+                    <p class="center text">Click on the button to start the 30-seconds countdown.</p>
 
-                    <h3 class="center text"> Défi des drapeaux</h3>
-                    <p class="center text">Pendant ce temps, observe attentivement chaque drapeau présenté à l'écran. Utilise tes connaissances en géographie pour identifier le pays correspondant à chaque drapeau.</p>
+                    <h3 class="center text">Flags challenge</h3>
+                    <p class="center text">Meanwhile, look carefully at each flag on the screen. Use your knowledge of geography to identify the country corresponding to each flag.</p>
 
-                    <h3 class="center text">Réponse rapide</h3>
-                    <p class="center text">Tape le nom du pays que tu penses correspondre au drapeau dans la zone de saisie et appuie sur "Entrée" pour soumettre ta réponse.</p>
+                    <h3 class="center text">Quick response</h3>
+                    <p class="center text">Type the name of the country you think matches the flag in the input box and press "Enter" to submit your answer.</p>
 
-                    <h3 class="center text">Gagne des points</h3>
-                    <p class="center text">Chaque réponse correcte te rapporte des points. Plus tu devines de drapeaux correctement, plus ton score augmente.</p>
+                    <h3 class="center text">Win points</h3>
+                    <p class="center text">Each correct answer earns you points. The more flags you guess correctly, the higher your score.</p>
 
-                    <h3 class="center text">Défie-toi</h3>
-                    <p class="center text">Vois combien de drapeaux tu peux deviner avant que le temps ne soit écoulé. Repousse tes limites et améliore ton score à chaque partie !</p>
+                    <h3 class="center text">Challenge yourself</h3>
+                    <p class="center text">See how many flags you can guess before time runs out. Push your limits and improve your score with every game!</p>
         </div>
     </div>
 
     <footer>
         <!-- <a href="https://speedflag.onrender.com/"><img alt="logo du site" class="logo" src=""></a> -->
-        <p class="createur">Fait par <a class="createur" href="https://github.com/nathVL" target="_blank">Nathan</a></p>
+        <p class="createur">Made by <a class="createur" href="https://github.com/nathVL" target="_blank">Nathan</a></p>
     </footer>
 </body>
 </html>
