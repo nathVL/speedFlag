@@ -16,12 +16,13 @@
     <link rel="icon" type="image/png" href="./img/favicon.png">
     <link type="text/css" rel="stylesheet" href="./style.css">
     <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="9f1d6a7a-c1f9-4538-88f6-dfc1e971df75"></script>
+    <script>let test = 'caca';</script>
     <script src="script.js" defer></script>
 </head>
 <body>
     <div id="settingsPanel" class="cacher">
         <h2 id="parametreTitre">Settings</h2>
-        <img src="./img/close-line.png" id="fermerParametre" alt="Croix cliquable pour fermer les paramètres">
+        <img src="/img/close-line.png" id="fermerParametre" alt="Croix cliquable pour fermer les paramètres">
         <div id="continents">
             <h3>Countries to guess</h3>
             <ol>
@@ -51,14 +52,19 @@
             </ol>
         </div>
         
-        <h3>Other features</h3>
+        <h3>Time to guess</h3>
         
         <div class="form-check">
             <input type="checkbox" id="tmpsAct" name="tmpsActive" checked/>
             <label for="tmpsAct">Time</label>
+            <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0">
         </div>
         
-        <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0">
+        <div id="langue">
+            <h3>Other languages</h3>
+            <a href="/fr/">French</a>
+        </div>
+
     </div>
 
     <div id="panneau_jeux">
@@ -73,15 +79,15 @@
     </div>
 
     <div id="findujeu" class="cacher">
-        <h2 class="text">Fini !</h2>
-        <p id="nbDrapeauFin" class="text">Nb flags : 0</p>
+        <h2 class="text">Finished !</h2>
+        <p id="nbDrapeauFin" class="text">Number of flags guessed : 0</p>
         <button id="recommencer" onclick="recommencerJeu()">Restart</button>
     </div>
     
     <div id="jeu" class="cacher">
         <div id="abandonEtNb">
             <button id="abandonner" onclick="finirLejeu();">Give up</button>
-            <p id="nbDrapeau" class="text">Nb flags : 0</p>
+            <p id="nbDrapeau" class="text">Current : 0</p>
         </div>        
         <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
         <div class="form">

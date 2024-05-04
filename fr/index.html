@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>SpeedFlag - Devine les drapeaux rapidement !</title>
+    <meta charset="UTF-8" />
+    <meta name="title" property="og:title" content="SpeedFlag - Devinez les drapeaux le plus rapidement possible."/>
+    <meta name="description" property="og:description" content="Testez vos connaissances en drapeaux du monde entier. Relevez le défi et devinez les pays à partir de leurs drapeaux. Jouez dès maintenant sur SpeedFlag !">
+    <meta name="keywords" content="drapeau, deviner, devine, guess, europe, pays, geographie, speed, flag, speedflag">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow" />
+    
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="SpeedFlag"/>
+    <meta property="og:url" content="https://speedflag.net"/>
+  
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link type="text/css" rel="stylesheet" href="/style.css">
+    <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="9f1d6a7a-c1f9-4538-88f6-dfc1e971df75"></script>
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <div id="settingsPanel" class="cacher">
+        <h2 id="parametreTitre">Paramètre</h2>
+        <img src="/img/close-line.png" id="fermerParametre" alt="Croix cliquable pour fermer les paramètres">
+        <div id="continents">
+            <h3>Pays à deviner</h3>
+            <ol>
+                <li>
+                    <input type="checkbox" id="eu" name="Europe" checked />
+                    <label for="eu">Europe</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="af" name="Afrique" />
+                    <label for="af">Afrique</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="oc" name="Oceanie" />
+                    <label for="oc">Oceanie</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="ams" name="AmeriqueS" />
+                    <label for="ams">Amerique du sud</label>
+                </li>
+                <li>
+                    <label for="amn"><input type="checkbox" id="amn" name="AmeriqueN" />Amerique du nord</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="as" name="asie" />
+                    <label for="as">Asie</label>
+                </li>
+            </ol>
+        </div>
+        
+        <h3>Autres caractéristiques</h3>
+        
+        <div class="form-check">
+            <input type="checkbox" id="tmpsAct" name="tmpsActive" checked/>
+            <label for="tmpsAct">Temps</label>
+            <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0">
+        </div>
+        
+        
+
+        <div id="langue">
+            <h3>Autres langues</h3>
+            <a href="/">Anglais</a>
+        </div>
+    </div>
+
+    <div id="panneau_jeux">
+        <div id="top">
+            <span id="titre">SpeedFlag</span>
+            <img src="/img/settings.png" id="settings-logo" alt="Logo cliquable des paramètres">
+        </div>
+
+    <div id="prejeu" class="flex">
+        <h2 class="text">Commencer le jeu</h2>
+        <button id="commencerLejeu">Commencer</button>
+    </div>
+
+    <div id="findujeu" class="cacher">
+        <h2 class="text">Fini !</h2>
+        <p id="nbDrapeauFin" class="text">Nombre de drapeaux deviné : 0</p>
+        <button id="recommencer" onclick="recommencerJeu()">Recommencer</button>
+    </div>
+    
+    <div id="jeu" class="cacher">
+        <div id="abandonEtNb">
+            <button id="abandonner" onclick="finirLejeu();">Abandonner</button>
+            <p id="nbDrapeau" class="text">Nb drapeau : 0</p>
+        </div>        
+        <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
+        <div class="form">
+            <label for="guess">Cherche un pays...</label>
+            <div id="entree">
+                <p id="minuteur" class="text">30.0</p>
+                <input type="text" id="guess">
+                <button id="passer" onclick="afficherReponseCorrecte(true);">Passer</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="faux" class="cacher">Réponse incorrecte</div>
+    </div>
+    <div id="listeReponses"></div>
+
+    <div class="presentation">
+        <div class="intro">
+            <h2 class="text-important">Bienvenue sur SpeedFlag,</h2>
+            <p class="text">Le jeu de devinettes de drapeaux qui va mettre tes connaissances géographiques à l'épreuve ! Prêt à relever le défi ?</p>
+        </div>
+        <div class="how-to-play">
+            <h2 class="text-important center">Comment jouer :</h2>
+                    <h3 class="center text">Lancement du jeu</h3>
+                    <p class="center text">Clique sur le bouton pour lancer le compte à rebours de 30 secondes.</p>
+
+                    <h3 class="center text"> Défi des drapeaux</h3>
+                    <p class="center text">Pendant ce temps, observe attentivement chaque drapeau présenté à l'écran. Utilise tes connaissances en géographie pour identifier le pays correspondant à chaque drapeau.</p>
+
+                    <h3 class="center text">Réponse rapide</h3>
+                    <p class="center text">Tape le nom du pays que tu penses correspondre au drapeau dans la zone de saisie et appuie sur "Entrée" pour soumettre ta réponse.</p>
+
+                    <h3 class="center text">Gagne des points</h3>
+                    <p class="center text">Chaque réponse correcte te rapporte des points. Plus tu devines de drapeaux correctement, plus ton score augmente.</p>
+
+                    <h3 class="center text">Défie-toi</h3>
+                    <p class="center text">Vois combien de drapeaux tu peux deviner avant que le temps ne soit écoulé. Repousse tes limites et améliore ton score à chaque partie !</p>
+        </div>
+    </div>
+
+    <footer>
+        <!-- <a href="https://speedflag.onrender.com/"><img alt="logo du site" class="logo" src=""></a> -->
+        <p class="createur">Fait par <a class="createur" href="https://github.com/nathVL" target="_blank">Nathan</a></p>
+    </footer>
+</body>
+</html>

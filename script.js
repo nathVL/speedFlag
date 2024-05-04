@@ -18,15 +18,17 @@ const oceanieCheckbox = document.getElementById("oc");
 const ameriqueSudCheckbox = document.getElementById("ams");
 const ameriqueNordCheckbox = document.getElementById("amn");
 const asieCheckbox = document.getElementById("as");
-// Commander le jeu
+// Commencer le jeu
 const commencerJeu = document.getElementById("commencerLejeu");
-// const rejouer = document.getElementById("recommencer");
 const tmpsJeu = document.getElementById("tmpsJeu");
 const tmpsAct = document.getElementById("tmpsAct");
+// Timer
+const countdown = document.getElementById("minuteur");
 
 // Toutes les données
 let pays_a_deviner = "";
 let score = 0;
+let time;
 // Dictionnaire des pays par continent avec comme clé le nom du pays et comme valeur le code osi.
 let pays_europe = {
     "allemagne": "de",
@@ -310,8 +312,8 @@ function creerContenueDansDiv(type, className, content, idDiv) {
 }
 
 /**
- * Affiche une réponse correcte avec le nom du pays et son drapeau.
- * @returns {void}
+ * Affiche une réponse (encadré en rouge si elle est passé)
+ * @param {boolean} passer - Indique si la réponse a été passée.
  */
 function afficherReponseCorrecte(passer = false) {
     // Créer une nouvelle div pour afficher la réponse
@@ -324,7 +326,7 @@ function afficherReponseCorrecte(passer = false) {
     } else {
         score++;
     }
-    nbDrapeau.innerHTML = `Nb drapeau : ${score}`;
+    nbDrapeau.innerHTML = nbDrapeau.innerHTML.slice(0,-1)+score;
     // Créer et afficher le nom du pays avec la premiere lettre en maj
     let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
     nouvelleReponse.appendChild(nomPays);
@@ -363,16 +365,6 @@ function estBon(valeur_devine) {
     }
 }
 
-// Gestionnaire d'événement pour le champ de texte
-champTexte.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        estBon(champTexte.value);
-        champTexte.value = "";
-    }
-});
-
-
 // Fonctions bouton
 function afficherParametre() {
     let parametre = document.getElementById("settingsPanel");
@@ -382,20 +374,10 @@ function afficherParametre() {
         parametre.classList.add("cacher");
         newDrapeauADeviner();
     }
-    
 }
-
-
-// Boutons
-settings_logo.addEventListener("click", afficherParametre);
-fermer_parametre.addEventListener("click", afficherParametre);
-
-// Comande jeu
-commencerJeu.addEventListener("click", commencerLeJeu);
 
 function commencerLeJeu() {
     if (tmpsAct.checked) {
-        // Commencer le timer
         StartTimer(tmpsJeu.value);
     } else {
         minuteur.classList.add("cacher")
@@ -414,6 +396,20 @@ function commencerLeJeu() {
     newDrapeauADeviner();
 }
 
+// Gestionnaire d'événement pour le champ de texte
+champTexte.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        estBon(champTexte.value);
+        champTexte.value = "";
+    }
+});
+
+// Boutons
+settings_logo.addEventListener("click", afficherParametre);
+fermer_parametre.addEventListener("click", afficherParametre);
+commencerJeu.addEventListener("click", commencerLeJeu);
+
 function recommencerJeu() {
     finJeu.classList.add("cacher")
     finJeu.classList.remove("flex")   
@@ -425,10 +421,10 @@ function recommencerJeu() {
 
 function finirLejeu() {
     time = 0;
-    nbDrapeau.innerHTML = `Drapeau deviné : 0`;
+    nbDrapeau.innerHTML = nbDrapeau.innerHTML.slice(0,-1) + "0";
     jeu.classList.remove("flex");
     jeu.classList.add("cacher");
-    nbDrapeauFin.innerHTML = `Drapeau deviné : ${score}`;
+    nbDrapeauFin.innerHTML = nbDrapeauFin.innerHTML.slice(0,-1)+score;
     finJeu.classList.remove("cacher");
     finJeu.classList.add("flex");
     reponseFausse.classList.add("cacher");
@@ -436,11 +432,9 @@ function finirLejeu() {
 
 
 // TIMER
-const countdown = document.getElementById("minuteur");
-let time;
 
 /**
- * Met à jour le compte à rebours en affichant les minutes, les secondes et les dixièmes de seconde.
+ * Met à jour le compte à rebours en affichant les secondes et les dixièmes de seconde.
  */
 function updateCountDown() {
     const seconds = Math.floor((time % 600) / 10);
@@ -456,10 +450,6 @@ function updateCountDown() {
     }
 } 
 
-/**
- * Démarre le timer avec les secondes spécifiées
- * @param {number} timeSeconds - Les secondes pour démarrer le timer.
- */
 function StartTimer(timeSeconds) {
     estArrete = false;
     time = timeSeconds * 10;
