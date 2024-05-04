@@ -6,8 +6,6 @@ const drapeauImg = document.getElementById("drapeau_a_deviner");
 const reponseFausse = document.getElementById("faux");
 const champTexte = document.getElementById("guess");
 const listeReponses = document.getElementById("listeReponses");
-const settings_logo = document.getElementById("settings-logo");
-const fermer_parametre = document.getElementById("fermerParametre");
 const nbDrapeau = document.getElementById("nbDrapeau");
 const nbDrapeauFin = document.getElementById("nbDrapeauFin");
 const finJeu = document.getElementById("findujeu");
@@ -19,7 +17,6 @@ const ameriqueSudCheckbox = document.getElementById("ams");
 const ameriqueNordCheckbox = document.getElementById("amn");
 const asieCheckbox = document.getElementById("as");
 // Commencer le jeu
-const commencerJeu = document.getElementById("commencerLejeu");
 const tmpsJeu = document.getElementById("tmpsJeu");
 const tmpsAct = document.getElementById("tmpsAct");
 // Timer
@@ -29,212 +26,8 @@ const countdown = document.getElementById("minuteur");
 let pays_a_deviner = "";
 let score = 0;
 let time;
+let intervalId;
 // Dictionnaire des pays par continent avec comme clé le nom du pays et comme valeur le code osi.
-let pays_europe = {
-    "allemagne": "de",
-    "albanie": "al",
-    "andorre": "ad",
-    "autriche": "at",
-    "belgique": "be",
-    "bielorussie": "by",
-    "bosnie-herzegovine": "ba",
-    "bulgarie": "bg",
-    "croatie": "hr",
-    "danemark": "dk",
-    "espagne": "es",
-    "estonie": "ee",
-    "finlande": "fi",
-    "france": "fr",
-    "grece": "gr",
-    "hongrie": "hu",
-    "irlande": "ie",
-    "islande": "is",
-    "italie": "it",
-    "lettonie": "lv",
-    "liechtenstein": "li",
-    "lituanie": "lt",
-    "luxembourg": "lu",
-    "macedoine du nord": "mk",
-    "malte": "mt",
-    "moldavie": "md",
-    "monaco": "mc",
-    "montenegro": "me",
-    "norvege": "no",
-    "pays-bas": "nl",
-    "pologne": "pl",
-    "portugal": "pt",
-    "republique tcheque": "cz",
-    "roumanie": "ro",
-    "royaume-uni": "gb",
-    "russie": "ru",
-    "saint-marin": "sm",
-    "serbie": "rs",
-    "slovaquie": "sk",
-    "slovenie": "si",
-    "suede": "se",
-    "suisse": "ch",
-    "ukraine": "ua",
-    "vatican": "va"
-};
-let pays_afrique = {
-    "algerie": "dz",
-    "angola": "ao",
-    "benin": "bj",
-    "botswana": "bw",
-    "burkina faso": "bf",
-    "burundi": "bi",
-    "cap vert": "cv",
-    "cameroun": "cm",
-    "republique centrafricaine": "cf",
-    "tchad": "td",
-    "comores": "km",
-    "congo": "cg",
-    "republique democratique du congo": "cd",
-    "djibouti": "dj",
-    "egypte": "eg",
-    "guinee equatoriale": "gq",
-    "erythree": "er",
-    "ethiopie": "et",
-    "gabon": "ga",
-    "gambie": "gm",
-    "ghana": "gh",
-    "guinee": "gn",
-    "guinee-bissau": "gw",
-    "cote d'ivoire": "ci",
-    "kenya": "ke",
-    "lesotho": "ls",
-    "liberia": "lr",
-    "libye": "ly",
-    "madagascar": "mg",
-    "malawi": "mw",
-    "mali": "ml",
-    "mauritanie": "mr",
-    "maurice": "mu",
-    "maroc": "ma",
-    "mozambique": "mz",
-    "namibie": "na",
-    "niger": "ne",
-    "nigeria": "ng",
-    "rwanda": "rw",
-    "sao tome-et-principe": "st",
-    "senegal": "sn",
-    "seychelles": "sc",
-    "sierra leone": "sl",
-    "somalie": "so",
-    "afrique du sud": "za",
-    "soudan du sud": "ss",
-    "soudan": "sd",
-    "eswatini": "sz",
-    "tanzanie": "tz",
-    "togo": "tg",
-    "tunisie": "tn",
-    "ouganda": "ug",
-    "zambie": "zm",
-    "zimbabwe": "zw"
-};
-let pays_asie = {
-    "afghanistan": "af",
-    "armenie": "am",
-    "azerbaidjan": "az",
-    "bahrein": "bh",
-    "bangladesh": "bd",
-    "bhoutan": "bt",
-    "brunei": "bn",
-    "cambodge": "kh",
-    "chine": "cn",
-    "chypre": "cy",
-    "georgie": "ge",
-    "inde": "in",
-    "indonesie": "id",
-    "iran": "ir",
-    "irak": "iq",
-    "israel": "il",
-    "japon": "jp",
-    "jordanie": "jo",
-    "kazakhstan": "kz",
-    "koweit": "kw",
-    "kirghizistan": "kg",
-    "laos": "la",
-    "liban": "lb",
-    "malaisie": "my",
-    "maldives": "mv",
-    "mongolie": "mn",
-    "birmanie": "mm",
-    "nepal": "np",
-    "oman": "om",
-    "pakistan": "pk",
-    "palestine": "ps",
-    "philippines": "ph",
-    "qatar": "qa",
-    "arabie saoudite": "sa",
-    "singapour": "sg",
-    "coree du sud": "kr",
-    "sri lanka": "lk",
-    "syrie": "sy",
-    "tadjikistan": "tj",
-    "thailande": "th",
-    "timor oriental": "tl",
-    "turkmenistan": "tm",
-    "emirats arabes unis": "ae",
-    "ouzbekistan": "uz",
-    "viet nam": "vn",
-    "yemen": "ye"
-};
-let pays_oceanie = {
-    "australie": "au",
-    "fidji": "fj",
-    "kiribati": "ki",
-    "iles marshall": "mh",
-    "micronesie": "fm",
-    "nauru": "nr",
-    "nouvelle-zelande": "nz",
-    "palaos": "pw",
-    "papouasie-nouvelle-guinee": "pg",
-    "samoa": "ws",
-    "iles salomon": "sb",
-    "tonga": "to",
-    "tuvalu": "tv",
-    "vanuatu": "vu"
-};
-let pays_amerique_sud = {
-    "argentine": "ar",
-    "bolivie": "bo",
-    "bresil": "br",
-    "chili": "cl",
-    "colombie": "co",
-    "equateur": "ec",
-    "guyana": "gy",
-    "paraguay": "py",
-    "perou": "pe",
-    "suriname": "sr",
-    "uruguay": "uy",
-    "venezuela": "ve"
-};
-let pays_amerique_nord = {
-    "antigua-et-barbuda": "ag",
-    "bahamas": "bs",
-    "barbade": "bb",
-    "belize": "bz",
-    "canada": "ca",
-    "costa rica": "cr",
-    "cuba": "cu",
-    "dominique": "dm",
-    "republique dominicaine": "do",
-    "el salvador": "sv",
-    "grenade": "gd",
-    "guatemala": "gt",
-    "haiti": "ht",
-    "honduras": "hn",
-    "jamaique": "jm",
-    "mexique": "mx",
-    "nicaragua": "ni",
-    "panama": "pa",
-    "saint-christophe-et-nieves": "kn",
-    "sainte-lucie": "lc",
-    "saint-vincent-et-les-grenadines": "vc",
-    "trinite-et-tobago": "tt",
-    "etats-unis": "us"
-};
 let liste_pays = {};
 
 
@@ -247,12 +40,12 @@ let liste_pays = {};
 function newDrapeauADeviner() {
     majDrapeau();
     let nomsDesPays = Object.keys(liste_pays);
-    paysAleatoire = nomsDesPays[Math.floor(Math.random() * nomsDesPays.length)];
+    let paysAleatoire = nomsDesPays[Math.floor(Math.random() * nomsDesPays.length)];
     while (paysAleatoire == pays_a_deviner) {
         paysAleatoire = nomsDesPays[Math.floor(Math.random() * nomsDesPays.length)];
     }
     pays_a_deviner = paysAleatoire;
-    iso = liste_pays[paysAleatoire];
+    let iso = liste_pays[paysAleatoire];
     let url = url_premiere_partie + iso + url_extentinon_jpg;
     drapeauImg.src = url;
 }
@@ -406,9 +199,12 @@ champTexte.addEventListener("keydown", function(event) {
 });
 
 // Boutons
-settings_logo.addEventListener("click", afficherParametre);
-fermer_parametre.addEventListener("click", afficherParametre);
-commencerJeu.addEventListener("click", commencerLeJeu);
+document.getElementById("settings-logo").addEventListener("click", afficherParametre);
+document.getElementById("fermerParametre").addEventListener("click", afficherParametre);
+document.getElementById("commencerLejeu").addEventListener("click", commencerLeJeu);
+document.getElementById("passer").addEventListener("click", () => afficherReponseCorrecte(true));
+document.getElementById("recommencer").addEventListener("click", recommencerJeu);
+document.getElementById("abandonner").addEventListener("click", finirLejeu);
 
 function recommencerJeu() {
     finJeu.classList.add("cacher")
@@ -451,7 +247,6 @@ function updateCountDown() {
 } 
 
 function StartTimer(timeSeconds) {
-    estArrete = false;
     time = timeSeconds * 10;
     intervalId = setInterval(updateCountDown, 100);
 }

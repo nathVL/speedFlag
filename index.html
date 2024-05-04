@@ -16,8 +16,218 @@
     <link rel="icon" type="image/png" href="./img/favicon.png">
     <link type="text/css" rel="stylesheet" href="./style.css">
     <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="9f1d6a7a-c1f9-4538-88f6-dfc1e971df75"></script>
-    <script>let test = 'caca';</script>
-    <script src="script.js" defer></script>
+    <script>let pays_europe = {
+        "germany": "de",
+        "albania": "al",
+        "andorra": "ad",
+        "austria": "at",
+        "belgium": "be",
+        "belarus": "by",
+        "bosnia and herzegovina": "ba",
+        "bulgaria": "bg",
+        "croatia": "hr",
+        "denmark": "dk",
+        "spain": "es",
+        "estonia": "ee",
+        "finland": "fi",
+        "france": "fr",
+        "greece": "gr",
+        "hungary": "hu",
+        "ireland": "ie",
+        "iceland": "is",
+        "italy": "it",
+        "latvia": "lv",
+        "liechtenstein": "li",
+        "lithuania": "lt",
+        "luxembourg": "lu",
+        "north macedonia": "mk",
+        "malta": "mt",
+        "moldova": "md",
+        "monaco": "mc",
+        "montenegro": "me",
+        "norway": "no",
+        "netherlands": "nl",
+        "poland": "pl",
+        "portugal": "pt",
+        "czech republic": "cz",
+        "romania": "ro",
+        "united kingdom": "gb",
+        "russia": "ru",
+        "san marino": "sm",
+        "serbia": "rs",
+        "slovakia": "sk",
+        "slovenia": "si",
+        "sweden": "se",
+        "switzerland": "ch",
+        "ukraine": "ua",
+        "vatican": "va"
+    };
+    
+    let pays_afrique = {
+        "algeria": "dz",
+        "angola": "ao",
+        "benin": "bj",
+        "botswana": "bw",
+        "burkina faso": "bf",
+        "burundi": "bi",
+        "cape verde": "cv",
+        "cameroon": "cm",
+        "central african republic": "cf",
+        "chad": "td",
+        "comoros": "km",
+        "congo": "cg",
+        "democratic republic of the congo": "cd",
+        "djibouti": "dj",
+        "egypt": "eg",
+        "equatorial guinea": "gq",
+        "eritrea": "er",
+        "ethiopia": "et",
+        "gabon": "ga",
+        "gambia": "gm",
+        "ghana": "gh",
+        "guinea": "gn",
+        "guinea-bissau": "gw",
+        "ivory coast": "ci",
+        "kenya": "ke",
+        "lesotho": "ls",
+        "liberia": "lr",
+        "libya": "ly",
+        "madagascar": "mg",
+        "malawi": "mw",
+        "mali": "ml",
+        "mauritania": "mr",
+        "mauritius": "mu",
+        "morocco": "ma",
+        "mozambique": "mz",
+        "namibia": "na",
+        "niger": "ne",
+        "nigeria": "ng",
+        "rwanda": "rw",
+        "sao tome and principe": "st",
+        "senegal": "sn",
+        "seychelles": "sc",
+        "sierra leone": "sl",
+        "somalia": "so",
+        "south africa": "za",
+        "south sudan": "ss",
+        "sudan": "sd",
+        "eswatini": "sz",
+        "tanzania": "tz",
+        "togo": "tg",
+        "tunisia": "tn",
+        "uganda": "ug",
+        "zambia": "zm",
+        "zimbabwe": "zw"
+    };
+    
+    let pays_asie = {
+        "afghanistan": "af",
+        "armenia": "am",
+        "azerbaijan": "az",
+        "bahrain": "bh",
+        "bangladesh": "bd",
+        "bhutan": "bt",
+        "brunei": "bn",
+        "cambodia": "kh",
+        "china": "cn",
+        "cyprus": "cy",
+        "georgia": "ge",
+        "india": "in",
+        "indonesia": "id",
+        "iran": "ir",
+        "iraq": "iq",
+        "israel": "il",
+        "japan": "jp",
+        "jordan": "jo",
+        "kazakhstan": "kz",
+        "kuwait": "kw",
+        "kyrgyzstan": "kg",
+        "laos": "la",
+        "lebanon": "lb",
+        "malaysia": "my",
+        "maldives": "mv",
+        "mongolia": "mn",
+        "myanmar": "mm",
+        "nepal": "np",
+        "oman": "om",
+        "pakistan": "pk",
+        "palestine": "ps",
+        "philippines": "ph",
+        "qatar": "qa",
+        "saudi arabia": "sa",
+        "singapore": "sg",
+        "south korea": "kr",
+        "sri lanka": "lk",
+        "syria": "sy",
+        "tajikistan": "tj",
+        "thailand": "th",
+        "timor-leste": "tl",
+        "turkmenistan": "tm",
+        "united arab emirates": "ae",
+        "uzbekistan": "uz",
+        "vietnam": "vn",
+        "yemen": "ye"
+    };
+    
+    let pays_oceanie = {
+        "australia": "au",
+        "fiji": "fj",
+        "kiribati": "ki",
+        "marshall islands": "mh",
+        "micronesia": "fm",
+        "nauru": "nr",
+        "new zealand": "nz",
+        "palau": "pw",
+        "papua new guinea": "pg",
+        "samoa": "ws",
+        "solomon islands": "sb",
+        "tonga": "to",
+        "tuvalu": "tv",
+        "vanuatu": "vu"
+    };
+    
+    let pays_amerique_sud = {
+        "argentina": "ar",
+        "bolivia": "bo",
+        "brazil": "br",
+        "chile": "cl",
+        "colombia": "co",
+        "ecuador": "ec",
+        "guyana": "gy",
+        "paraguay": "py",
+        "peru": "pe",
+        "suriname": "sr",
+        "uruguay": "uy",
+        "venezuela": "ve"
+    };
+    
+    let pays_amerique_nord = {
+        "antigua and barbuda": "ag",
+        "bahamas": "bs",
+        "barbados": "bb",
+        "belize": "bz",
+        "canada": "ca",
+        "costa rica": "cr",
+        "cuba": "cu",
+        "dominica": "dm",
+        "dominican republic": "do",
+        "el salvador": "sv",
+        "grenada": "gd",
+        "guatemala": "gt",
+        "haiti": "ht",
+        "honduras": "hn",
+        "jamaica": "jm",
+        "mexico": "mx",
+        "nicaragua": "ni",
+        "panama": "pa",
+        "saint kitts and nevis": "kn",
+        "saint lucia": "lc",
+        "saint vincent and the grenadines": "vc",
+        "trinidad and tobago": "tt",
+        "united states": "us"
+    };
+    </script>
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <div id="settingsPanel" class="cacher">
@@ -81,12 +291,12 @@
     <div id="findujeu" class="cacher">
         <h2 class="text">Finished !</h2>
         <p id="nbDrapeauFin" class="text">Number of flags guessed : 0</p>
-        <button id="recommencer" onclick="recommencerJeu()">Restart</button>
+        <button id="recommencer">Restart</button>
     </div>
     
     <div id="jeu" class="cacher">
         <div id="abandonEtNb">
-            <button id="abandonner" onclick="finirLejeu();">Give up</button>
+            <button id="abandonner">Give up</button>
             <p id="nbDrapeau" class="text">Current : 0</p>
         </div>        
         <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
@@ -95,7 +305,7 @@
             <div id="entree">
                 <p id="minuteur" class="text">30.0</p>
                 <input type="text" id="guess">
-                <button id="passer" onclick="afficherReponseCorrecte(true);">Pass</button>
+                <button id="passer">Pass</button>
             </div>
         </div>
     </div>
