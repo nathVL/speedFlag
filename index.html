@@ -15,6 +15,8 @@
   
     <link rel="icon" type="image/png" href="./img/favicon.png">
     <link type="text/css" rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="9f1d6a7a-c1f9-4538-88f6-dfc1e971df75"></script>
     <script>let pays_europe = {
         "germany": "de",
@@ -230,44 +232,49 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
+    <div class="flou cacher" id="panneau_flou"></div>
     <div id="settingsPanel" class="cacher">
         <h2 id="parametreTitre">Settings</h2>
         <img src="/img/close-line.png" id="fermerParametre" alt="Croix cliquable pour fermer les paramètres">
         <div id="continents">
             <h3>Countries to guess</h3>
-            <ol>
-                <li>
-                    <input type="checkbox" id="eu" name="Europe" checked />
-                    <label for="eu">Europe</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="af" name="Afrique" />
-                    <label for="af">Africa</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="oc" name="Oceanie" />
-                    <label for="oc">Oceania</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="ams" name="AmeriqueS" />
-                    <label for="ams">South America</label>
-                </li>
-                <li>
-                    <label for="amn"><input type="checkbox" id="amn" name="AmeriqueN" />North America</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="as" name="asie" />
-                    <label for="as">Asia</label>
-                </li>
-            </ol>
+            <div id="paysBox">
+                    <div class="pair">
+                        <input type="checkbox" id="eu" name="Europe" class="checkB" checked />
+                        <label for="eu">Europe</label>
+                    </div>
+                    
+                    <div class="pair">
+                        <input type="checkbox" id="af" class="checkB" name="Afrique" />
+                        <label for="af">Africa</label>
+                    </div>
+                
+                    <div class="pair">
+                        <input type="checkbox" id="oc" class="checkB" name="Oceanie" />
+                        <label for="oc">Oceania</label>
+                    </div>
+                    <div class="pair">
+                        <input type="checkbox" id="ams" class="checkB" name="AmeriqueS" />
+                        <label for="ams">South America</label>
+                    </div>
+                
+                    <div class="pair">
+                        <input type="checkbox" id="amn" class="checkB" name="AmeriqueN" />
+                        <label for="amn">North America</label>
+                    </div>
+                
+                    <div class="pair">
+                        <input type="checkbox" id="as" class="checkB" name="asie" />
+                        <label for="as">Asia</label>
+                    </div>
+            </div>
         </div>
         
         <h3>Time to guess</h3>
-        
         <div class="form-check">
-            <input type="checkbox" id="tmpsAct" name="tmpsActive" checked/>
+            <input type="checkbox" id="tmpsAct" name="tmpsActive" class="checkB" checked/>
             <label for="tmpsAct">Time</label>
-            <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0">
+            <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0"/>
         </div>
         
         <div id="langue">

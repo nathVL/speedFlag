@@ -161,11 +161,17 @@ function estBon(valeur_devine) {
 // Fonctions bouton
 function afficherParametre() {
     let parametre = document.getElementById("settingsPanel");
+    let flou = document.getElementById("panneau_flou");
+    let body = document.querySelector('body');
     if (parametre.className == "cacher") {
         parametre.classList.remove("cacher");
+        flou.classList.remove("cacher");
+        body.style.overflow = "hidden";
     } else {
         parametre.classList.add("cacher");
+        flou.classList.add("cacher");
         newDrapeauADeviner();
+        body.style.overflow = "";
     }
 }
 
