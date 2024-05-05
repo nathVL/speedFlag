@@ -176,19 +176,21 @@ function afficherParametre() {
 }
 
 function commencerLeJeu() {
+    // Gerer l'affichage du chrono
     if (tmpsAct.checked) {
         StartTimer(tmpsJeu.value);
+        minuteur.classList.remove("cacher");
     } else {
         let phrase = document.getElementById("devinePhrase");
         phrase.style.margin = 0;
-        minuteur.classList.add("cacher")
-    }    
+        minuteur.classList.add("cacher");
+    }
     // Cacher le premier panneau
     const prejeu = document.getElementById("prejeu");
-    prejeu.classList.remove("flex")
-    prejeu.classList.add("cacher")
+    prejeu.classList.remove("flex");
+    prejeu.classList.add("cacher");
     // Monter le jeu
-    const jeu = document.getElementById("jeu")
+    const jeu = document.getElementById("jeu");
     jeu.classList.remove("cacher");
     jeu.classList.add("flex");
     // Ecrire direct
