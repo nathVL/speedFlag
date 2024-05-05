@@ -7,6 +7,7 @@ const reponseFausse = document.getElementById("faux");
 const champTexte = document.getElementById("guess");
 const listeReponses = document.getElementById("listeReponses");
 const nbDrapeau = document.getElementById("nbDrapeau");
+const textNbDrapeau = nbDrapeau.textContent.slice(0,-1);
 const nbDrapeauFin = document.getElementById("nbDrapeauFin");
 const finJeu = document.getElementById("findujeu");
 const flou = document.getElementById("panneau_flou");
@@ -120,7 +121,7 @@ function afficherReponseCorrecte(passer = false) {
     } else {
         score++;
     }
-    nbDrapeau.innerHTML = nbDrapeau.innerHTML.slice(0,-1)+score;
+    nbDrapeau.textContent = textNbDrapeau + score;
     // Créer et afficher le nom du pays avec la premiere lettre en maj
     let nomPays = creerContenueDansDiv("p", "pays_reponses", pays_a_deviner.charAt(0).toUpperCase() + pays_a_deviner.substring(1), "nom");
     nouvelleReponse.appendChild(nomPays);
@@ -228,10 +229,10 @@ function recommencerJeu() {
 
 function finirLejeu() {
     time = 0;
-    nbDrapeau.innerHTML = nbDrapeau.innerHTML.slice(0,-1) + "0";
+    nbDrapeau.textContent = textNbDrapeau + "0";
     jeu.classList.remove("flex");
     jeu.classList.add("cacher");
-    nbDrapeauFin.innerHTML = nbDrapeauFin.innerHTML.slice(0,-1)+score;
+    nbDrapeauFin.innerHTML = textNbDrapeau + score;
     finJeu.classList.remove("cacher");
     finJeu.classList.add("flex");
     reponseFausse.classList.add("cacher");
