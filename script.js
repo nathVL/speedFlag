@@ -9,6 +9,7 @@ const listeReponses = document.getElementById("listeReponses");
 const nbDrapeau = document.getElementById("nbDrapeau");
 const nbDrapeauFin = document.getElementById("nbDrapeauFin");
 const finJeu = document.getElementById("findujeu");
+const flou = document.getElementById("panneau_flou");
 // Continents
 const europeCheckbox = document.getElementById("eu");
 const afriqueCheckbox = document.getElementById("af");
@@ -161,7 +162,6 @@ function estBon(valeur_devine) {
 // Fonctions bouton
 function afficherParametre() {
     let parametre = document.getElementById("settingsPanel");
-    let flou = document.getElementById("panneau_flou");
     let body = document.querySelector('body');
     if (parametre.className == "cacher") {
         parametre.classList.remove("cacher");
@@ -179,6 +179,8 @@ function commencerLeJeu() {
     if (tmpsAct.checked) {
         StartTimer(tmpsJeu.value);
     } else {
+        let phrase = document.getElementById("devinePhrase");
+        phrase.style.margin = 0;
         minuteur.classList.add("cacher")
     }    
     // Cacher le premier panneau
@@ -211,6 +213,7 @@ document.getElementById("commencerLejeu").addEventListener("click", commencerLeJ
 document.getElementById("passer").addEventListener("click", () => afficherReponseCorrecte(true));
 document.getElementById("recommencer").addEventListener("click", recommencerJeu);
 document.getElementById("abandonner").addEventListener("click", finirLejeu);
+flou.addEventListener("click", afficherParametre);
 
 function recommencerJeu() {
     finJeu.classList.add("cacher")

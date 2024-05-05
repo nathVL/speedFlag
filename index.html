@@ -273,7 +273,7 @@
         <h3>Time to guess</h3>
         <div class="form-check">
             <input type="checkbox" id="tmpsAct" name="tmpsActive" class="checkB" checked/>
-            <label for="tmpsAct">Time</label>
+            <label for="tmpsAct">Time (sec)</label>
             <input type="number" id="tmpsJeu" name="temps de jeu" value="30" max="60" min="0"/>
         </div>
         
@@ -308,7 +308,7 @@
         </div>        
         <img alt="Drapeau à deviner sur SpeedFlag" id="drapeau_a_deviner" class="drapeau">
         <div class="form">
-            <label for="guess">Try a country...</label>
+            <label for="guess" id="devinePhrase">Try a country...</label>
             <div id="entree">
                 <p id="minuteur" class="text">30.0</p>
                 <input type="text" id="guess">
