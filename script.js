@@ -143,6 +143,7 @@ function afficherReponseCorrecte(passer = false) {
 function normaliserSaisie(saisie) {
     saisie = saisie.toLowerCase();
     saisie = saisie.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    saisie = saisie.normalize("NFD").replace(/-/g, ' ');
     return saisie;
 }
 
@@ -153,7 +154,7 @@ function normaliserSaisie(saisie) {
  */
 function estBon(valeur_devine) {
     valeur_devine = normaliserSaisie(valeur_devine);
-    if (valeur_devine == pays_a_deviner) {
+    if (valeur_devine == pays_a_deviner.replace(/-/g, ' ')) {
         afficherReponseCorrecte();        
     } else {
         reponseFausse.classList.remove("cacher")
